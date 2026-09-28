@@ -68,19 +68,10 @@ export default function Welcome() {
           {isLoading ? (
             <>
               <div className="w-4 h-4 border-2 border-white border-b-transparent rounded-full animate-spin mr-2"></div>
-              Signing in...
+              Loading demo...
             </>
           ) : (
-            <>
-              <svg 
-                className="h-5 w-5 mr-2" 
-                viewBox="0 0 55 55" 
-                fill="currentColor"
-              >
-                <path d="M27.5 0C12.3122 0 0 12.3122 0 27.5C0 42.6878 12.3122 55 27.5 55C42.6878 55 55 42.6878 55 27.5C55 12.3122 42.6878 0 27.5 0ZM29.7727 18.3621L18.3621 29.7727L14.1364 25.5471C13.747 25.1576 13.747 24.5348 14.1364 24.1454C14.5258 23.756 15.1486 23.756 15.538 24.1454L18.3621 26.9694L28.3712 16.9602C28.7606 16.5708 29.3833 16.5708 29.7727 16.9602C30.1622 17.3496 30.1622 17.9727 29.7727 18.3621Z" />
-              </svg>
-              Log in with Replit
-            </>
+            <>Enter the Demo</>
           )}
         </Button>
         
