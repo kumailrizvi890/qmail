@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { setupAuth, isAuthenticated } from "./replitAuth";
+import { setupAuth, isAuthenticated } from "./demoAuth";
 import { z } from "zod";
 import { insertEmailProviderSchema, insertFilterRuleSchema } from "@shared/schema";
 import { encryptEmail, processIncomingEmail, applyFilterRules } from "./email-service";

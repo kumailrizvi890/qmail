@@ -21,7 +21,16 @@ const quantumConfig: QuantumConfig = {
  * @param numBytes - Number of random bytes to generate
  * @returns Promise resolving to a Buffer containing random bytes
  */
+const HAS_LIVE_QUANTUM_KEY = quantumConfig.apiKey !== 'your-quantum-api-key';
+
 export async function generateQuantumRandomBytes(numBytes: number): Promise<Buffer> {
+  // No live Azure Quantum credentials on the public demo deployment - skip
+  // straight to the local fallback rather than waiting out a network call
+  // that's guaranteed to fail (and would eat into a serverless function's
+  // time budget for no benefit).
+  if (!HAS_LIVE_QUANTUM_KEY) {
+    return generateQuantumInspiredRandomBytes(numBytes);
+  }
   try {
     const response = await axios({
       method: 'post',
