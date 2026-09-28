@@ -1,8 +1,8 @@
 {
-  "buildCommand": "npm run build:vercel",
+  "buildCommand": "vite build",
   "outputDirectory": "dist/public",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/((?!api).*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
