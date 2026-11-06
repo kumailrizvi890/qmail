@@ -31,7 +31,7 @@ export default function Welcome() {
             </svg>
           </div>
           <h1 className="text-3xl font-bold mb-2">Welcome to QMail</h1>
-          <p className="text-neutral-600 dark:text-neutral-400">Your Quantum Shield for Smarter Email</p>
+          <p className="text-neutral-600 dark:text-neutral-400">AI scam detection for your inbox</p>
         </div>
         
         <div className="space-y-4 mb-8">
@@ -40,7 +40,7 @@ export default function Welcome() {
               <Shield className="h-5 w-5 text-primary mr-2" />
               <h3 className="font-semibold">Privacy-Focused</h3>
             </div>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">Your emails never leave your device. All processing happens locally.</p>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400">Stored messages are encrypted with AES-256-GCM.</p>
           </Card>
           
           <Card className="p-4 bg-neutral-100 dark:bg-neutral-900">
@@ -54,9 +54,9 @@ export default function Welcome() {
           <Card className="p-4 bg-neutral-100 dark:bg-neutral-900">
             <div className="flex items-center mb-2">
               <Lock className="h-5 w-5 text-primary mr-2" />
-              <h3 className="font-semibold">Quantum-Enhanced Security</h3>
+              <h3 className="font-semibold">Encrypted Storage</h3>
             </div>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">Azure Quantum integration for next-level encryption and protection.</p>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400">Every saved message gets its own random key and authentication tag.</p>
           </Card>
         </div>
         
