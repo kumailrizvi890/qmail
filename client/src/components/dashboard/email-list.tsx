@@ -81,7 +81,7 @@ function EmailRow({
         }
       }}
       className={cn(
-        "flex cursor-pointer gap-3 px-4 py-3 hover:bg-accent/60",
+        "animate-slide-in flex cursor-pointer gap-3 px-4 py-3 hover:bg-accent/60",
         selected && "bg-accent",
         !email.isRead && "bg-white dark:bg-zinc-900"
       )}
