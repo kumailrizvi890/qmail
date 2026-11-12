@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useLocation } from "wouter";
+import { useLocation, useSearch } from "wouter";
 import { AlertTriangle, Star } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useEmails, useUpdateEmail } from "@/hooks/use-emails";
@@ -28,8 +28,8 @@ interface TriagedRow {
   triage: TriageResult;
 }
 
-function readParam(location: string, name: string): string | null {
-  const match = location.match(new RegExp(`[?&]${name}=([^&]+)`));
+function readParam(search: string, name: string): string | null {
+  const match = search.match(new RegExp(`[?&]${name}=([^&]+)`);
   return match ? decodeURIComponent(match[1]) : null;
 }
 
@@ -153,13 +153,14 @@ function EmailRow({
 }
 
 export default function EmailList() {
-  const [location, setLocation] = useLocation();
+  const [, setLocation] = useLocation();
+  const queryString = useSearch();
   const { triaged, search, view } = useInboxState();
   const updateEmail = useUpdateEmail();
 
-  const folder = readParam(location, "folder") ?? "inbox";
-  const pile = readParam(location, "pile");
-  const selectedId = readParam(location, "email");
+  const folder = readParam(queryString, "folder") ?? "inbox";
+  const pile = readParam(queryString, "pile");
+  const selectedId = readParam(queryString, "email");
 
   const { data: emails = [], isLoading, error, refetch } = useEmails(folder);
 
@@ -207,7 +208,7 @@ export default function EmailList() {
     if (!email.isRead) {
       updateEmail.mutate({ id: email.id, data: { isRead: true } });
     }
-    const params = new URLSearchParams(location.split("?")[1] ?? "");
+    const params = new URLSearchParams(queryString);
     params.set("email", String(email.id));
     setLocation(`/?${params.toString()}`);
   };
