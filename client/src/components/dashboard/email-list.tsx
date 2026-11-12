@@ -29,8 +29,7 @@ interface TriagedRow {
 }
 
 function readParam(search: string, name: string): string | null {
-  const match = search.match(new RegExp(`[?&]${name}=([^&]+)`));
-  return match ? decodeURIComponent(match[1]) : null;
+  return new URLSearchParams(search).get(name);
 }
 
 function formatListTime(receivedAt: Date | null): string {
