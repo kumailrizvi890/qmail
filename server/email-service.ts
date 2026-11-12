@@ -1,8 +1,8 @@
-import { analyzeEmail } from './openai-service';
-import { generateQuantumKey } from './azure-quantum';
+import { analyzeEmail } from './openai-service.ts';
+import { generateQuantumKey } from './azure-quantum.ts';
 import crypto from 'crypto';
-import { InsertEmail, Email } from '../shared/schema';
-import { storage } from './storage';
+import { InsertEmail, Email } from '../shared/schema.ts';
+import { storage } from './storage.ts';
 
 // Mock implementation for encrypting outgoing emails
 // This would be replaced with real email provider API integration
