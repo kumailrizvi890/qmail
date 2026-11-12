@@ -1,7 +1,7 @@
 import { analyzeEmail } from './openai-service';
 import { generateQuantumKey } from './azure-quantum';
 import crypto from 'crypto';
-import { InsertEmail, Email } from '@shared/schema';
+import { InsertEmail, Email } from '../shared/schema';
 import { storage } from './storage';
 
 // Mock implementation for encrypting outgoing emails
