@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "wouter";
+import { useLocation, useSearch } from "wouter";
 import {
   AlertTriangle,
   Archive,
@@ -52,7 +52,8 @@ function useStreamingText(text: string | null) {
 type DraftStatus = "idle" | "writing" | "ready" | "refused" | "error";
 
 function EmailDetailBody({ email }: { email: Email }) {
-  const [location, setLocation] = useLocation();
+  const [, setLocation] = useLocation();
+  const search = useSearch();
   const { triaged } = useInboxState();
   const updateEmail = useUpdateEmail();
   const sendEmail = useSendEmail();
@@ -137,7 +138,7 @@ function EmailDetailBody({ email }: { email: Email }) {
   }, []);
 
   const closeDetail = () => {
-    const params = new URLSearchParams(location.split("?")[1] ?? "");
+    const params = new URLSearchParams(search);
     params.delete("email");
     const query = params.toString();
     setLocation(query ? `/?${query}` : "/");
@@ -459,8 +460,8 @@ function EmailDetailBody({ email }: { email: Email }) {
 }
 
 export default function EmailDetail() {
-  const [location] = useLocation();
-  const emailId = readParam(location, "email");
+  const search = useSearch();
+  const emailId = readParam(search, "email");
   const { data: email, isLoading, error, refetch } = useEmail(emailId ?? "");
 
   if (!emailId) {
@@ -512,3 +513,4 @@ function EmailDetailSkeleton() {
     </div>
   );
 }
+location.split
