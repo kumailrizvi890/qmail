@@ -31,8 +31,7 @@ import type { Email } from "@/types/email";
 import { cn } from "@/lib/utils";
 
 function readParam(search: string, name: string): string | null {
-  const match = search.match(new RegExp(`[?&]${name}=([^&]+)`));
-  return match ? decodeURIComponent(match[1]) : null;
+  return new URLSearchParams(search).get(name);
 }
 
 // Reveal a draft a few characters at a time, like it is being written.
