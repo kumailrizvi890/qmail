@@ -284,3 +284,37 @@ Thanks for the note — I'll get back to you shortly.
 
 Best regards`;
 }
+
+// A stored message carries its analysis on aiAnalysis. Pull the fields
+// triage needs out of it so callers do not repeat the mapping.
+export interface TriageMessage {
+  from: string;
+  subject: string | null;
+  body: string | null;
+  isRead: boolean;
+  aiAnalysis?: {
+    category?: string;
+    urgencyLevel?: "low" | "medium" | "high";
+    isScam?: boolean;
+    scamProbability?: number;
+    unsubscribeRecommended?: boolean;
+  } | null;
+}
+
+export function toTriageInput(email: TriageMessage): TriageInput {
+  return {
+    from: email.from,
+    subject: email.subject,
+    body: email.body,
+    category: email.aiAnalysis?.category,
+    urgencyLevel: email.aiAnalysis?.urgencyLevel,
+    isScam: email.aiAnalysis?.isScam,
+    scamProbability: email.aiAnalysis?.scamProbability,
+    unsubscribeRecommended: email.aiAnalysis?.unsubscribeRecommended,
+    isRead: email.isRead,
+  };
+}
+
+export function triageMessage(email: TriageMessage): TriageResult {
+  return triageEmail(toTriageInput(email));
+}
