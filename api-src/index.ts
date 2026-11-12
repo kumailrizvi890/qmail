@@ -1,5 +1,5 @@
-import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "../server/routes";
+import express, { type Request, type Response, type NextFunction } from "express";
+import { registerRoutes } from "../server/routes.ts";
 
 // Vercel serverless entry point.
 //

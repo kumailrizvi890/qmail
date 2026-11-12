@@ -1,4 +1,4 @@
-import { users, type User, type InsertUser, userSettings, type UserSettings, type InsertUserSettings, emails, type Email, type InsertEmail, filterRules, type FilterRule, type InsertFilterRule, emailProviders, type EmailProvider, type InsertEmailProvider } from "@shared/schema";
+import { users, type User, type InsertUser, userSettings, type UserSettings, type InsertUserSettings, emails, type Email, type InsertEmail, filterRules, type FilterRule, type InsertFilterRule, emailProviders, type EmailProvider, type InsertEmailProvider } from "../shared/schema.ts";
 import session from "express-session";
 import createMemoryStore from "memorystore";
 

@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { extractSummary } from "../shared/triage.ts";
 
 // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
 
@@ -57,7 +58,7 @@ function mockAnalyzeEmail(from: string, subject: string, body: string): EmailAna
     isScam: isScam || looksSpoofed,
     scamProbability: looksSpoofed ? Math.max(scamProbability, 0.62) : scamProbability,
     reasons: reasons.length ? reasons : ["No known phishing or scam patterns detected"],
-    summary: `${subject} - ${body.slice(0, 120)}${body.length > 120 ? "..." : ""}`,
+    summary: extractSummary( { subject, body }),
     category,
     urgencyLevel: matched.length >= 3 ? "high" : matched.length >= 1 ? "medium" : "low",
     sensitiveContent: /password|ssn|social security|credit card|bank account/i.test(text),
