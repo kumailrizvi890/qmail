@@ -1,12 +1,12 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { setupAuth, isAuthenticated } from "./demoAuth";
+import { storage } from "./storage.ts";
+import { setupAuth, isAuthenticated } from "./demoAuth.ts";
 import { z } from "zod";
-import { insertEmailProviderSchema, insertFilterRuleSchema } from "../shared/schema";
-import { encryptEmail, processIncomingEmail, applyFilterRules } from "./email-service";
-import { analyzeEmail, generateUnsubscribeEmail } from "./openai-service";
-import { generateQuantumKey, generateSecureRandomString } from "./azure-quantum";
+import { insertEmailProviderSchema, insertFilterRuleSchema } from "../shared/schema.ts";
+import { encryptEmail, processIncomingEmail, applyFilterRules } from "./email-service.ts";
+import { analyzeEmail, generateUnsubscribeEmail } from "./openai-service.ts";
+import { generateQuantumKey, generateSecureRandomString } from "./azure-quantum.ts";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Setup authentication
