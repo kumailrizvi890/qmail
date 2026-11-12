@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Link, useLocation } from "wouter";
+import { Link, useSearch } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useEmails } from "@/hooks/use-emails";
 import { setComposeOpen, useInboxState } from "@/lib/inbox-state";
@@ -35,13 +35,12 @@ const FOLDERS: { folder: string; label: string; icon: LucideIcon }[] = [
 const PILES: TriagePile[] = ["needs-reply", "fyi", "low"];
 
 export default function Sidebar() {
-  const [location] = useLocation();
+  const search = useSearch();
   const { triaged } = useInboxState();
   const { data: emails = [] } = useEmails();
-
-  const folderParam = location.match(/folder=([^&]+)/)?.[1];
+  const folderParam = search.match(/folder=([^&]+)/)?.[1];
   const folder = folderParam ? decodeURIComponent(folderParam) : "inbox";
-  const pileParam = location.match(/pile=([^&]+)/)?.[1];
+  const pileParam = search.match(/pile=([^&]+)/)?.[1];
   const activePile = pileParam ? decodeURIComponent(pileParam) : null;
 
   const folderCounts = useMemo(() => {
