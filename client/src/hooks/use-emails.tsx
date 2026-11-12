@@ -8,7 +8,7 @@ export function useEmails(folder?: string) {
     ? `/api/emails?folder=${encodeURIComponent(folder)}`
     : "/api/emails";
 
-  return useQuery({
+  return useQuery<Email[]>({
     queryKey: [url],
     retry: 1,
   });
@@ -16,7 +16,7 @@ export function useEmails(folder?: string) {
 
 // Hook to fetch a single email by id
 export function useEmail(id: string | number) {
-  return useQuery({
+  return useQuery<Email>({
     queryKey: [`/api/emails/${id}`],
     enabled: !!id,
   });
