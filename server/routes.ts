@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./demoAuth";
 import { z } from "zod";
-import { insertEmailProviderSchema, insertFilterRuleSchema } from "@shared/schema";
+import { insertEmailProviderSchema, insertFilterRuleSchema } from "../shared/schema";
 import { encryptEmail, processIncomingEmail, applyFilterRules } from "./email-service";
 import { analyzeEmail, generateUnsubscribeEmail } from "./openai-service";
 import { generateQuantumKey, generateSecureRandomString } from "./azure-quantum";
