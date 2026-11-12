@@ -30,8 +30,8 @@ import {
 import type { Email } from "@/types/email";
 import { cn } from "@/lib/utils";
 
-function readParam(location: string, name: string): string | null {
-  const match = location.match(new RegExp(`[?&]${name}=([^&]+)`));
+function readParam(search: string, name: string): string | null {
+  const match = search.match(new RegExp(`[?&]${name}=([^&]+)`);
   return match ? decodeURIComponent(match[1]) : null;
 }
 
@@ -513,4 +513,3 @@ function EmailDetailSkeleton() {
     </div>
   );
 }
-location.split
