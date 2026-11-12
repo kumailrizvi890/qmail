@@ -15,7 +15,7 @@
  * refuse scams too.
  */
 import OpenAI from "openai";
-import { draftReply, triageEmail, type TriageInput } from "../shared/triage";
+import { draftReply, triageEmail, type TriageInput } from "../shared/triage.ts";
 
 type DraftRequestBody = {
   from?: unknown;
