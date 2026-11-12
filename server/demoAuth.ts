@@ -1,6 +1,6 @@
 import type { Express, RequestHandler } from "express";
-import { storage } from "./storage";
-import { processIncomingEmail } from "./email-service";
+import { storage } from "./storage.ts";
+import { processIncomingEmail } from "./email-service.ts";
 
 const SEED_EMAILS = [
   {
