@@ -7,10 +7,10 @@
   ],
   "functions": {
     "api/index.ts": {
-      "includeFiles": ["api-src/**", "server/**", "shared/**"]
+      "includeFiles": "api-src/**, server/**, shared/**"
     },
     "api/draft.ts": {
-      "includeFiles": ["shared/**"]
+      "includeFiles": "shared/**"
     }
   }
 }
