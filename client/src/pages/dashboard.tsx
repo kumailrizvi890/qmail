@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useLocation } from "wouter";
+import { useLocation, useSearch } from "wouter";
 import { useQueryClient } from "@tanstack/react-query";
 import {
   LayoutGrid,
@@ -23,8 +23,8 @@ import { triageMessage, TRIAGE_PILE_LABELS } from "@shared/triage";
 import type { TriagePile } from "@shared/triage";
 import { cn } from "@/lib/utils";
 
-function readParam(location: string, name: string): string | null {
-  const match = location.match(new RegExp(`[?&]${name}=([^&]+)`));
+function readParam(search: string, name: string): string | null {
+  const match = search.match(new RegExp(`[?&]${name}=([^&]+)`));
   return match ? decodeURIComponent(match[1]) : null;
 }
 
@@ -170,14 +170,14 @@ function ComposeDialog() {
 }
 
 export default function Dashboard() {
-  const [location] = useLocation();
+  const search = useSearch();
   const { triaged, view, composeOpen } = useInboxState();
   const queryClient = useQueryClient();
   const [triaging, setTriaging] = useState(false);
 
-  const folder = readParam(location, "folder") ?? "inbox";
-  const pile = readParam(location, "pile");
-  const selectedId = readParam(location, "email");
+  const folder = readParam(search, "folder") ?? "inbox";
+  const pile = readParam(search, "pile");
+  const selectedId = readParam(search, "email");
   const { data: emails = [] } = useEmails(folder);
 
   const unread = emails.filter((email) => !email.isRead).length;
